@@ -68,8 +68,8 @@ public class Manager {
         return departements;
     }
 
-    public void setDepartements(LinkedHashSet<Departement> departements) {
-        this.departements = departements;
+    public void addDepartement(Departement departement){
+        this.departements.add(departement);
     }
 
     @Override
