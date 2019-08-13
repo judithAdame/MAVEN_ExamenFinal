@@ -11,7 +11,7 @@ public class Manager {
     private String managerNumber;
     private String firstName;
     private String lastName;
-    private Date   dateHire;
+    private String dateHire;
     private boolean retired;
     private double salary;
     private LinkedHashSet<Departement> departements = new LinkedHashSet(); 
@@ -40,11 +40,11 @@ public class Manager {
         this.lastName = lastName;
     }
 
-    public Date getDateHire() {
+    public String getDateHire() {
         return dateHire;
     }
 
-    public void setDateHire(Date dateHire) {
+    public void setDateHire(String dateHire) {
         this.dateHire = dateHire;
     }
 

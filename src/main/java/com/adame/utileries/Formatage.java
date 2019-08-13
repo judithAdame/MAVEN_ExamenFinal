@@ -17,7 +17,13 @@ import java.util.logging.Logger;
  * @author 1895648
  */
 public class Formatage {
-    
+   public static double ParseCurrency(String s){
+        String regex = "[^\\d.-]+";
+        String newStr = s.replace(",", ".");
+        newStr = newStr.replaceAll(regex, "");
+        double resultat = Double.parseDouble(newStr);
+        return resultat;
+    } 
    
     public static Date ParseDate(String s){
         String formatISO8601 = "yyyy-MM-dd";

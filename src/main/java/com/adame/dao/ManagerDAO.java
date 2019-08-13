@@ -2,13 +2,19 @@ package com.adame.dao;
 
 import com.adame.modele.Departement;
 import com.adame.modele.Manager;
-import static com.adame.utileries.Formatage.ParseDate;
+import com.adame.utileries.Formatage;
+import static com.adame.utileries.Formatage.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.io.FileUtils;
@@ -59,15 +65,14 @@ public class ManagerDAO {
        Manager manager = new Manager();
         try {
             String mainJSON = IOUtils.toString(new FileInputStream(input), "UTF-8");
-            mainJSON = mainJSON.toLowerCase();
             JSONObject m = JSONObject.fromObject(mainJSON);
-            
+
             manager.setManagerNumber(m.getString("manager_number"));
-            manager.setFirstName(m.getString("firstName"));
-            manager.setLastName(m.getString("lastName"));
-            manager.setDateHire (ParseDate(m.getString("dateHire")));
+            manager.setFirstName(m.getString("first_name"));
+            manager.setLastName(m.getString("last_name"));
+            manager.setDateHire (m.getString("date_hire"));
             manager.setRetired(m.getBoolean("retired"));
-            manager.setSalary(m.getDouble("salary"));
+            manager.setSalary(ParseCurrency(m.getString("Salary")));
             
             JSONObject departementJson;
             Departement departement;
@@ -79,7 +84,7 @@ public class ManagerDAO {
                 departement.setDepartmentId(departementJson.getString("department_id"));
                 departement.setDepartmentName(departementJson.getString("department_name"));
                 departement.setCurrent(departementJson.getBoolean("current"));
-                departement.setNumberEmployees(departementJson.getInt("number_employees"));
+                departement.setNumberEmployees(departementJson.getInt("numberEmployees"));
                 departement.setMonths(departementJson.getInt("months"));
                 manager.addDepartement(departement);
             }
@@ -95,8 +100,11 @@ public class ManagerDAO {
         return m.getManagerNumber()+"-"+m.getLastName();
     }
 
-    private static int getYearHire(Manager m) {
-        return m.getDateHire().getYear();
+    private static int getYearHire(Manager m){
+        String strDate = m.getDateHire();
+        String[] splitDate = strDate.split(" ");
+        String annee = splitDate[2].trim();
+        return Integer.parseInt(annee);
     }
 
     private static int getTotalEmployee(Manager m) {

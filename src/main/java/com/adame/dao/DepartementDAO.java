@@ -12,6 +12,6 @@ public class DepartementDAO {
         return d.getDepartmentId()+"-"+d.getDepartmentName();
     }
     static String getSituation(Departement d) {
-        return (d.isCurrent()?"Is current":"current");
+        return (d.isCurrent()?"Is current":"Is not current");
     }    
 }
