@@ -1,0 +1,39 @@
+{
+	"manager_number": "1234",
+	"first_name": "Zied",
+	"last_name": "Zaier",
+	"date_hire": "1 January 1999",
+	"retired": true,
+	"Salary": 3000.70,
+	"departments": [{
+		"department_id": "201",
+		"department_name": "IT",
+		"current":true,
+		"numberEmployees": 70,
+		"months": 13
+	}, {
+		"department_id": "423",
+		"department_name": "Finance",
+		"current":false,
+		"numberEmployees": 75,
+		"months": 24.3
+	}, {
+		"department_id": "422",
+		"department_name": "Administration",
+		"current":true,
+		"numberEmployees": 60,
+		"months": 33
+	}, {
+		"department_id": "421",
+		"department_name": "Design",
+		"current":false,
+		"numberEmployees": 70,
+		"months": 34
+	}, {
+		"department_id": "420",
+		"department_name": "PROGRAMS Management",
+		"current":true,
+		"numberEmployees": 60,
+		"months": 43
+	}]
+}
