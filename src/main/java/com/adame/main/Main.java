@@ -2,7 +2,7 @@ package com.adame.main;
 
 import com.adame.dao.ManagerDAO;
 
-/**
+/** 
  * @author 1895648
  */
 public class Main {
